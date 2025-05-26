@@ -1,0 +1,254 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #1a1a1a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+.dark-theme {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-theme .app {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-theme .main-content {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-theme .card {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+.dark-theme .search-input {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #ffffff;
+}
+
+.dark-theme .btn-primary {
+    background-color: #4263eb;
+    color: white;
+}
+
+.dark-theme .btn-primary:hover {
+    background-color: #364fc7;
+}
+
+.dark-theme .toggle-sidebar-btn {
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+    color: #fff !important;
+}
+
+.dark-theme .toggle-sidebar-btn:hover {
+    background-color: #444 !important;
+}
+
+.dark-theme .toggle-sidebar-btn svg,
+.dark-theme .toggle-sidebar-btn i {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+.dark-theme .sidebar {
+    background-color: #2d2d2d;
+    color: #fff;
+}
+
+.dark-theme .sidebar .active,
+.dark-theme .sidebar .menu-item:hover {
+    background-color: #2d2d2d;
+    color: #fff;
+}
+
+.dark-theme .sidebar .menu-item i {
+    color: #fff;
+}
+
+.dark-theme .header {
+    background-color: #2d2d2d !important;
+    color: #fff !important;
+    border-bottom: 1px solid #222;
+}
+
+.dark-theme .header .search-input {
+    background-color: #2d2d2d;
+    color: #fff;
+    border-color: #444;
+}
+
+.dark-theme .header .icon,
+.dark-theme .sidebar .icon {
+    color: #fff;
+}
+
+.app {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    transition: width 0.3s;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.main-content {
+    flex: 1;
+    /* 自动占满剩余空间 */
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-left: 32px;
+    padding-right: 32px;
+    /* 新增：根据侧边栏宽度偏移主内容 */
+    margin-left: 240px;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.sidebar-collapsed {
+    margin-left: 60px;
+}
+
+.search-input {
+    background-color: #f1f3f5;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 300px;
+}
+
+.btn-primary {
+    background-color: #4263eb;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #364fc7;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.toggle-sidebar-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    cursor: pointer;
+}
+
+.toggle-sidebar-btn:hover {
+    background-color: #e9ecef;
+}
+
+
+/* Header Dark Mode */
+
+.dark-theme header.bg-white {
+    /* Target header specifically overriding bg-white */
+    background-color: #23272f !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #31343b;
+}
+
+.dark-theme header i {
+    /* Target all icons in header */
+    color: #a0aec0;
+    /* Lighter gray for icons */
+}
+
+.dark-theme header .search-input {
+    background-color: #2d2d2d;
+    color: #fff;
+    border-color: #444;
+}
+
+.dark-theme header .search-input::placeholder {
+    color: #a0aec0;
+}
+
+.dark-theme header select {
+    color: #ffffff;
+    background-color: #23272f;
+    /* Ensure select background matches header */
+}
+
+
+/* Sidebar Dark Mode */
+
+.dark-theme .sidebar {
+    background-color: #23272f;
+    color: #e2e8f0;
+    /* Slightly softer white for text */
+}
+
+.dark-theme .sidebar .sidebar-logo {
+    color: #ffffff;
+}
+
+.dark-theme .sidebar .sidebar-toggle-btn {
+    /* Corrected class name */
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+    color: #ffffff !important;
+}
+
+.dark-theme .sidebar .sidebar-toggle-btn:hover {
+    background-color: #444 !important;
+}
+
+.dark-theme .sidebar .sidebar-toggle-btn i {
+    /* Target icon within the button */
+    color: #ffffff !important;
+}
+
+.dark-theme .sidebar .sidebar-item {
+    /* Corrected class name */
+    color: #a0aec0;
+    /* Default item color */
+}
+
+.dark-theme .sidebar .sidebar-item i {
+    color: #a0aec0;
+    /* Default icon color */
+}
+
+.dark-theme .sidebar .sidebar-item:hover,
+.dark-theme .sidebar .sidebar-item.active {
+    /* Corrected class name */
+    background-color: #31343b;
+    color: #ffffff;
+}
+
+.dark-theme .sidebar .sidebar-item:hover i,
+.dark-theme .sidebar .sidebar-item.active i {
+    color: #ffffff;
+}
