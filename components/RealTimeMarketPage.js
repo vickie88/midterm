@@ -2,6 +2,8 @@ function RealTimeMarketPage({ language }) {
     try {
         const [selectedCoin, setSelectedCoin] = React.useState('BTC');
         const [searchValue, setSearchValue] = React.useState('');
+        const [showCoinDetail, setShowCoinDetail] = React.useState(false);
+        const [selectedCoinData, setSelectedCoinData] = React.useState(null);
         // 直接用全局 cryptoData
         const data = window.cryptoData || cryptoData;
 
@@ -9,6 +11,29 @@ function RealTimeMarketPage({ language }) {
             // 这里写你的搜索逻辑
             alert('搜索内容: ' + searchValue);
         };
+
+        // 处理币种行点击事件
+        const handleCoinRowClick = (coinData) => {
+            setSelectedCoinData(coinData);
+            setShowCoinDetail(true);
+        };
+
+        // 返回实时大盘页面
+        const handleBackToMarket = () => {
+            setShowCoinDetail(false);
+            setSelectedCoinData(null);
+        };
+
+        // 如果显示币种详情页面，渲染币种详情组件
+        if (showCoinDetail && selectedCoinData) {
+            return (
+                <CoinDetailPage 
+                    coinData={selectedCoinData} 
+                    language={language} 
+                    onBack={handleBackToMarket}
+                />
+            );
+        }
 
         return (
             <div className="market-container" data-name="realtime-market-page" data-file="components/RealTimeMarketPage.js">
@@ -102,7 +127,7 @@ function RealTimeMarketPage({ language }) {
                             <option>{getTranslation(language, 'realTimeMarket_symbol')}</option>
                         </select>
                     </div>
-                    <CryptoTable data={data.tableData} language={language} />
+                    <CryptoTable data={data.tableData} language={language} onRowClick={handleCoinRowClick} />
                     <button className="btn-primary mt-4 mx-auto block">
                         {getTranslation(language, 'realTimeMarket_loadMore')}
                     </button>

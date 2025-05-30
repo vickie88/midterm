@@ -1,5 +1,5 @@
 .market-container {
-    max-width: 1500px;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 32px 40px;
     background: #f8f9fb;
@@ -147,7 +147,8 @@
     box-shadow: 0 6px 32px rgba(80, 112, 255, 0.10);
     padding: 40px 32px 32px 32px;
     margin-bottom: 40px;
-    overflow-x: auto; /* 允许水平滚动 */
+    overflow-x: auto;
+    /* 允许水平滚动 */
 }
 
 .dark-theme .price-table {
@@ -155,59 +156,81 @@
     box-shadow: 0 6px 32px rgba(0, 0, 0, 0.3);
 }
 
+
 /* 调整表格布局 */
+
 .price-table table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* 确保列宽固定 */
+    /* 移除 table-layout: fixed; 让表格自适应内容宽度 */
 }
 
+
 /* 第一列（收藏星标）的宽度 */
+
 .price-table table th:first-child,
 .price-table table td:first-child {
-    width: 40px; /* 减小收藏按钮列的宽度 */
-    padding-right: 0; /* 减少右侧内边距 */
+    width: 50px;
+    /* 增加收藏按钮列的宽度 */
+    padding-right: 8px;
     text-align: center;
 }
 
+
 /* Token列（第二列）的宽度和间距 */
+
 .price-table table th:nth-child(2),
 .price-table table td:nth-child(2) {
-    width: 160px; /* 给token名称分配足够空间 */
-    padding-left: 5px; /* 减少左侧内边距 */
+    width: 180px;
+    /* 增加token名称的空间 */
+    padding-left: 8px;
 }
 
+
 /* 价格列的宽度 */
+
 .price-table table th:nth-child(3),
 .price-table table th:nth-child(4),
 .price-table table td:nth-child(3),
 .price-table table td:nth-child(4) {
-    width: 120px;
+    width: 140px;
+    /* 增加价格列宽度 */
 }
+
 
 /* 变化百分比列 */
+
 .price-table table th:nth-child(5),
 .price-table table td:nth-child(5) {
-    width: 90px;
+    width: 100px;
+    /* 稍微增加变化列宽度 */
 }
 
-/* 市值和交易量列 - 给它们分配剩余空间 */
+
+/* 市值和交易量列 - 给它们分配更多空间 */
+
 .price-table table th:nth-child(6),
 .price-table table th:nth-child(7),
 .price-table table th:nth-child(8),
 .price-table table td:nth-child(6),
 .price-table table td:nth-child(7),
 .price-table table td:nth-child(8) {
+    min-width: 160px;
+    /* 设置最小宽度而不是固定宽度 */
     width: auto;
 }
 
-/* 减少所有单元格的内边距 */
-.price-table th, .price-table td {
-    padding: 12px 8px; /* 减少水平内边距 */
-    white-space: nowrap; /* 防止内容换行 */
-    overflow: hidden;
-    text-overflow: ellipsis; /* 内容溢出时显示省略号 */
+
+/* 增加所有单元格的内边距，让内容有更多空间 */
+
+.price-table th,
+.price-table td {
+    padding: 12px 12px;
+    /* 增加水平内边距 */
+    white-space: nowrap;
+    /* 防止内容换行 */
     text-align: left;
+    /* 移除 overflow: hidden 和 text-overflow: ellipsis 让内容完整显示 */
 }
 
 .price-table th {
@@ -344,7 +367,9 @@
     gap: 8px;
 }
 
+
 /* Utility classes for width and text alignment */
+
 .w-full {
     width: 100%;
 }
@@ -361,7 +386,9 @@
     text-align: right;
 }
 
+
 /* Additional styles for proper spacing in the table */
+
 .py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -393,15 +420,14 @@
         padding: 32px;
         min-height: 120px;
     }
-    
     /* 响应式表格样式 */
     .price-table {
         padding: 20px 16px;
         overflow-x: auto;
     }
-    
     .price-table table {
-        min-width: 900px; /* 确保表格不会过度压缩 */
+        min-width: 1200px;
+        /* 增加最小宽度，确保表格不会过度压缩 */
     }
 }
 
@@ -437,19 +463,17 @@
         padding: 8px;
         min-height: 60px;
     }
-    
     /* 小屏幕上更紧凑的表格 */
-    .price-table th, .price-table td {
+    .price-table th,
+    .price-table td {
         padding: 8px 6px;
         font-size: 0.9rem;
     }
-    
     /* 第一列（收藏星标）在小屏幕上更窄 */
     .price-table table th:first-child,
     .price-table table td:first-child {
         width: 30px;
     }
-    
     /* Token列在小屏幕上更窄 */
     .price-table table th:nth-child(2),
     .price-table table td:nth-child(2) {
@@ -465,7 +489,9 @@
     color: #a0a0a0;
 }
 
+
 /* Text colors for positive and negative values */
+
 .text-green-500 {
     color: #10B981;
 }
@@ -474,7 +500,9 @@
     color: #EF4444;
 }
 
+
 /* Border utility classes */
+
 .border-b {
     border-bottom: 1px solid #E5E7EB;
 }
@@ -483,11 +511,1104 @@
     border-bottom: 1px solid #374151;
 }
 
+
 /* Hover effect for table rows */
+
 .hover\:bg-gray-50:hover {
     background-color: #F9FAFB;
 }
 
 .dark-theme .hover\:bg-gray-50:hover {
     background-color: #1F2937;
+}
+
+
+/* 币种详情页面样式 */
+
+.coin-detail-container {
+    min-height: 100vh;
+    background: #f8f9fb;
+}
+
+.coin-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.back-button:hover {
+    background: #f3f4f6;
+}
+
+.search-bar {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 32px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f9fafb;
+    font-size: 16px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.language-select {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #4f46e5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.coin-detail-content {
+    display: flex;
+    gap: 20px;
+    padding: 32px;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.main-content {
+    flex: 1;
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.coin-info-header {
+    margin-bottom: 32px;
+}
+
+.coin-basic-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.coin-icon-name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.coin-icon {
+    font-size: 32px;
+    color: #f7931a;
+}
+
+.coin-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    color: #1f2937;
+}
+
+.coin-symbol {
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.currency-selector {
+    text-align: right;
+}
+
+.currency-selector span {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.currency-select {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.price-info {
+    margin-bottom: 24px;
+}
+
+.price-display {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.current-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.price-change.positive {
+    color: #10b981;
+}
+
+.price-change.negative {
+    color: #ef4444;
+}
+
+.price-change {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.converted-price {
+    font-size: 18px;
+    color: #6b7280;
+}
+
+.timeframe-selector {
+    display: flex;
+    gap: 16px;
+}
+
+.timeframe-btn {
+    padding: 12px 24px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    color: #6b7280;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.timeframe-btn.active {
+    background: #4f46e5;
+    color: #fff;
+    border-color: #4f46e5;
+}
+
+.timeframe-btn:hover:not(.active) {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.chart-section {
+    margin-top: 32px;
+}
+
+.chart-container-detail {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    min-height: 400px;
+    width: 100%;
+}
+
+.chart-placeholder-detail {
+    text-align: center;
+    color: #6b7280;
+}
+
+.mock-chart {
+    margin-top: 20px;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 2px;
+    height: 200px;
+}
+
+.chart-bar {
+    width: 8px;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.ai-analysis-section {
+    text-align: left;
+}
+
+.ai-analysis-btn {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ai-analysis-btn:hover {
+    background: #4338ca;
+}
+
+.trading-panel {
+    width: 320px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    height: fit-content;
+}
+
+.trading-tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    background: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    color: #4f46e5;
+    border-bottom-color: #4f46e5;
+}
+
+.trading-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.input-with-currency {
+    display: flex;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.amount-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.currency-dropdown {
+    padding: 12px 16px;
+    border: none;
+    background: #f9fafb;
+    border-left: 1px solid #e5e7eb;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.trade-model-select {
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.parameters-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+}
+
+.parameters-section h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.param-group {
+    margin-bottom: 16px;
+}
+
+.param-group label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.param-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.param-input-group input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.default-btn {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background: #f9fafb;
+    color: #6b7280;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.default-btn:hover {
+    background: #f3f4f6;
+}
+
+.buy-now-btn {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+}
+
+.buy-now-btn:hover {
+    background: #4338ca;
+}
+
+
+/* 深色主题支持 */
+
+.dark-theme .coin-detail-container {
+    background: #1a1a1a;
+}
+
+.dark-theme .coin-detail-header,
+.dark-theme .main-content,
+.dark-theme .trading-panel {
+    background: #2d2d2d;
+    border-color: #374151;
+}
+
+.dark-theme .coin-name,
+.dark-theme .current-price {
+    color: #e5e7eb;
+}
+
+.dark-theme .search-input,
+.dark-theme .currency-select,
+.dark-theme .trade-model-select,
+.dark-theme .amount-input,
+.dark-theme .param-input-group input {
+    background: #374151;
+    border-color: #4b5563;
+    color: #e5e7eb;
+}
+
+.dark-theme .chart-container-detail {
+    background: #374151;
+}
+
+
+/* 响应式设计 */
+
+@media (max-width: 1400px) {
+    .coin-detail-content {
+        flex-direction: column;
+    }
+    .trading-panel {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .coin-detail-header {
+        padding: 12px 16px;
+    }
+    .search-bar {
+        margin: 0 16px;
+    }
+    .coin-detail-content {
+        padding: 16px;
+        gap: 16px;
+    }
+    .main-content,
+    .trading-panel {
+        padding: 20px;
+    }
+    .coin-basic-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .timeframe-selector {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .timeframe-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+
+/* 简化的header样式 */
+
+.coin-detail-header-simple {
+    padding: 16px 32px;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* 调整内容区域布局，增加间距 */
+
+.coin-detail-content-spaced {
+    display: flex;
+    gap: 40px;
+    padding: 32px;
+    max-width: 2200px;
+    margin: 0 auto;
+}
+
+
+/* 左侧内容区域调整 */
+
+.main-content-left {
+    flex: 1;
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    max-width: calc(100% - 320px - 40px);
+    min-width: 800px;
+}
+
+
+/* 深色主题支持 */
+
+.dark-theme .coin-detail-header-simple {
+    background: #2d2d2d;
+    border-color: #374151;
+}
+
+.dark-theme .main-content-left {
+    background: #2d2d2d;
+}
+
+
+/* 响应式调整 */
+
+@media (max-width: 1400px) {
+    .coin-detail-content-spaced {
+        flex-direction: column;
+        gap: 32px;
+    }
+    .main-content-left {
+        max-width: 100%;
+        min-width: unset;
+        /* 在小屏幕上移除最小宽度限制 */
+    }
+}
+
+@media (max-width: 768px) {
+    .coin-detail-header-simple {
+        padding: 12px 16px;
+    }
+    .coin-detail-content-spaced {
+        padding: 16px;
+        gap: 16px;
+    }
+    .main-content-left {
+        padding: 20px;
+        min-width: unset;
+        /* 在手机屏幕上移除最小宽度限制 */
+    }
+    /* 在小屏幕上优化图表显示 */
+    .line-chart-container {
+        padding-left: 5px;
+        height: 350px;
+        /* 在小屏幕上稍微减少高度 */
+    }
+    .price-labels {
+        width: 50px;
+        /* 在小屏幕上减少价格标签宽度 */
+        padding-right: 8px;
+    }
+    .time-axis {
+        margin-left: 58px;
+        /* 调整时间轴左边距 */
+    }
+    .update-time {
+        margin-left: 66px;
+        /* 调整更新时间左边距 */
+    }
+}
+
+
+/* K线图和折线图样式 */
+
+.mock-chart {
+    position: relative;
+    height: 300px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.kline-chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: end;
+    padding: 20px;
+    z-index: 1;
+}
+
+.kline-item {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.kline-shadow {
+    position: absolute;
+    width: 1px;
+    background: #666;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.kline-body {
+    position: absolute;
+    width: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid;
+}
+
+.kline-body.positive {
+    background: #10B981;
+    border-color: #10B981;
+}
+
+.kline-body.negative {
+    background: #EF4444;
+    border-color: #EF4444;
+}
+
+.line-chart {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2;
+}
+
+.line-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.chart-grid {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 0;
+}
+
+.grid-line-horizontal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.grid-line-vertical {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* 深色主题调整 */
+
+.dark-theme .mock-chart {
+    background: #2d2d2d;
+}
+
+.dark-theme .grid-line-horizontal,
+.dark-theme .grid-line-vertical {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* 响应式调整 */
+
+@media (max-width: 768px) {
+    .kline-chart {
+        height: 200px;
+        padding: 10px;
+    }
+    .kline-body {
+        width: 4px;
+    }
+    .kline-wick {
+        width: 1px;
+    }
+}
+
+
+/* 新的折线图样式 */
+
+.line-chart-container {
+    position: relative;
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 20px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.price-labels {
+    width: 70px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 12px;
+}
+
+.price-label {
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #666;
+    background: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.chart-main {
+    flex: 1;
+    position: relative;
+    border-left: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    min-height: 300px;
+}
+
+.chart-grid-new {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.grid-line-h {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e8e8e8;
+}
+
+.grid-line-v {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e8e8e8;
+}
+
+.line-chart-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.current-price-indicator {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    z-index: 3;
+}
+
+.price-line {
+    width: 100%;
+    height: 1px;
+    background: #F59E0B;
+    position: relative;
+}
+
+.price-badge {
+    position: absolute;
+    right: -50px;
+    top: -10px;
+    background: #F59E0B;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.time-axis {
+    position: relative;
+    height: 40px;
+    margin-left: 70px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 15px;
+    padding-top: 10px;
+}
+
+.time-label {
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #666;
+    top: 8px;
+    white-space: nowrap;
+    padding: 2px 4px;
+    background: rgba(249, 250, 251, 0.8);
+    border-radius: 3px;
+}
+
+.update-time {
+    text-align: left;
+    font-size: 11px;
+    color: #999;
+    margin-top: 15px;
+    margin-left: 82px;
+}
+
+
+/* 深色主题适配 */
+
+.dark-theme .line-chart-container {
+    background: #2d2d2d;
+}
+
+.dark-theme .price-label {
+    background: #3a3a3a;
+    color: #ccc;
+}
+
+.dark-theme .chart-main {
+    border-color: #555;
+}
+
+.dark-theme .grid-line-h,
+.dark-theme .grid-line-v {
+    background: #444;
+}
+
+.dark-theme .time-axis {
+    border-color: #555;
+}
+
+.dark-theme .time-label,
+.dark-theme .update-time {
+    color: #ccc;
+}
+
+
+/* 新增图表容器样式 - 让图表居中 */
+
+.realistic-candlestick-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.dark-theme .realistic-candlestick-container {
+    background: #2d2d2d;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chart-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* 优化的SVG图表样式 */
+
+.candlestick-svg {
+    display: block;
+    margin: 0 auto;
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+}
+
+.dark-theme .candlestick-svg {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+
+/* 优化的价格标签样式 - 右侧纵轴 */
+
+.price-labels-right {
+    position: absolute;
+    right: -60px;
+    top: 20px;
+    height: calc(100% - 120px);
+    width: 50px;
+    z-index: 10;
+}
+
+.price-label-right {
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 11px;
+    color: #666;
+    background: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.dark-theme .price-label-right {
+    color: #ccc;
+    background: #3a3a3a;
+    border-color: #555;
+}
+
+
+/* 优化的时间轴样式 */
+
+.time-axis-realistic {
+    position: relative;
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 60px;
+    border-top: 2px solid #e8e8e8;
+    padding-top: 10px;
+    max-width: calc(100% - 140px);
+}
+
+.dark-theme .time-axis-realistic {
+    border-top-color: #555;
+}
+
+.time-label-realistic {
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #666;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 2px 4px;
+    background: #f8f9fa;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+}
+
+.dark-theme .time-label-realistic {
+    color: #ccc;
+    background: #3a3a3a;
+    border-color: #555;
+}
+
+
+/* 网格线样式优化 */
+
+.candlestick-svg line[stroke="#e8e8e8"] {
+    stroke: #f0f0f0;
+    stroke-width: 0.5;
+}
+
+.candlestick-svg line[stroke="#f0f0f0"] {
+    stroke: #f5f5f5;
+    stroke-width: 0.5;
+}
+
+.dark-theme .candlestick-svg line[stroke="#e8e8e8"] {
+    stroke: #444;
+}
+
+.dark-theme .candlestick-svg line[stroke="#f0f0f0"] {
+    stroke: #333;
+}
+
+
+/* K线样式优化 */
+
+.candlestick-svg rect[fill="#00c851"] {
+    fill: #10b981;
+    stroke: #059669;
+}
+
+.candlestick-svg rect[fill="#ff4444"] {
+    fill: #ef4444;
+    stroke: #dc2626;
+}
+
+.candlestick-svg line[stroke="#00c851"] {
+    stroke: #10b981;
+    stroke-width: 1.5;
+}
+
+.candlestick-svg line[stroke="#ff4444"] {
+    stroke: #ef4444;
+    stroke-width: 1.5;
+}
+
+
+/* 图表容器在chart-container内的居中样式 */
+
+.chart-container .realistic-candlestick-container {
+    margin: 20px auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+
+/* 响应式调整 */
+
+@media (max-width: 1024px) {
+    .realistic-candlestick-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .price-labels-right {
+        right: -50px;
+        width: 45px;
+    }
+    .time-axis-realistic {
+        margin-left: 50px;
+        max-width: calc(100% - 100px);
+    }
+}
+
+@media (max-width: 768px) {
+    .realistic-candlestick-container {
+        padding: 10px;
+    }
+    .candlestick-svg {
+        width: 100%;
+        max-width: 100%;
+    }
+    .price-labels-right {
+        right: -40px;
+        width: 35px;
+    }
+    .price-label-right {
+        font-size: 10px;
+        padding: 1px 3px;
+    }
+    .time-axis-realistic {
+        margin-left: 40px;
+        max-width: calc(100% - 80px);
+        height: 35px;
+    }
+    .time-label-realistic {
+        font-size: 10px;
+        padding: 1px 2px;
+    }
+}
+
+@media (max-width: 768px) {
+    .line-chart-container {
+        padding-left: 5px;
+    }
 }

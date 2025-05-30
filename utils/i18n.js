@@ -63,14 +63,39 @@ const translations = {
         historicalMarket_closePrice: 'Close Price',
         historicalMarket_volumeCol: 'Volume',
         historicalMarket_loadMore: 'Load more',
-        historicalMarket_bitcoinTitle: 'Bitcoin', // 这里可以根据实际币种动态生成，暂时写死Bitcoin
-        historicalMarket_changeValue: '{value}', // 用于显示涨跌幅，{value}会被实际数值替换
+        historicalMarket_bitcoinTitle: 'Bitcoin',
+        historicalMarket_changeValue: '{value}',
         historicalMarket_timePeriod: 'Time Period',
         historicalMarket_timeInterval: 'Time Interval',
         historicalMarket_avgMarketCap: 'Average Market Cap',
         historicalMarket_volume: 'Volume',
-        historicalMarket_chartTitle: 'Candlestick Chart', // 这里可以根据实际币种动态生成，暂时写死Bitcoin图表标题
+        historicalMarket_chartTitle: 'Candlestick Chart',
 
+        // --- Coin Detail Page ---
+        coinDetail_loadingData: 'Loading coin data...',
+        coinDetail_currency: 'CURRENCY',
+        coinDetail_buy: 'Buy',
+        coinDetail_sell: 'Sell',
+        coinDetail_buyAmount: 'BUY AMOUNT',
+        coinDetail_costAmount: 'COST AMOUNT',
+        coinDetail_tradeModel: 'TRADE MODEL',
+        coinDetail_setParameters: 'SET YOUR PARAMETERS',
+        coinDetail_movingAvgPeriod: 'MOVING AVERAGE PERIOD',
+        coinDetail_stdDevMultiplier: 'STD DEV MULTIPLIER',
+        coinDetail_bollingerPeriod: 'BOLLINGER BAND PERIOD',
+        coinDetail_takeProfitStopLoss: 'TAKE PROFIT / STOP LOSS',
+        coinDetail_default: 'Default',
+        coinDetail_buyNow: 'Buy Now',
+        coinDetail_aiAnalysis: 'AI ANALYSIS OF CHART',
+        coinDetail_lastUpdated: 'Last updated:',
+        coinDetail_timeframe_1Day: '1 Day',
+        coinDetail_timeframe_7Days: '7 Days',
+        coinDetail_timeframe_1Month: '1 month',
+        coinDetail_timeframe_3Month: '3 month',
+        coinDetail_timeframe_1Year: '1 year',
+        coinDetail_tradeModel_meanReversion: 'Mean Reversion',
+        coinDetail_tradeModel_trendFollowing: 'Trend Following',
+        coinDetail_tradeModel_arbitrage: 'Arbitrage',
 
         // --- Settings Page ---
         accountSettings: 'Account Settings',
@@ -81,7 +106,7 @@ const translations = {
         username: 'Username',
         userID: 'UserID',
         email: 'Email',
-        balance: 'Balance', // Note: This key might be generic, check usage
+        balance: 'Balance',
         joinDate: 'Join Date',
         assetUnit: 'Asset Unit',
         decimalPrecision: 'Decimal Precision',
@@ -96,26 +121,21 @@ const translations = {
         changes: 'Changes',
         logOut: 'Log Out',
         darkMode: 'Dark Mode',
-        small: 'Small', // Font size options likely need medium/large too
+        small: 'Small',
         open: 'Open',
         redPoint: 'Red Point',
 
         // --- Wallet Page ---
-        totalBalance: 'Total Balance', // For the top card title
+        totalBalance: 'Total Balance',
         deposit: 'Deposit',
-        assetBalances: 'Asset Balances', // For the table card title
+        assetBalances: 'Asset Balances',
         asset: 'Asset',
         symbol: 'Symbol',
         market24h: '24H MARKET',
-        // Renamed table header keys
-        onOrdersQuantity: 'On Orders Quantity', // Count -> Quantity
-        onOrdersValue: 'On Orders Value', // Amount -> Value
-        availableQuantity: 'Available Quantity', // Count -> Quantity
-        availableValue: 'Available Value', // Amount -> Value
-        // Removed keys: onOrders, availableBalance, totalBalanceTable, onOrdersCount, onOrdersAmount, availableCount, availableAmount
-
-
-
+        onOrdersQuantity: 'On Orders Quantity',
+        onOrdersValue: 'On Orders Value',
+        availableQuantity: 'Available Quantity',
+        availableValue: 'Available Value',
     },
     zh: {
         // --- 侧边栏 & 通用 ---
@@ -181,13 +201,39 @@ const translations = {
         historicalMarket_closePrice: '收盘价',
         historicalMarket_volumeCol: '成交量',
         historicalMarket_loadMore: '加载更多',
-        historicalMarket_bitcoinTitle: '比特币', // 这里可以根据实际币种动态生成，暂时写死比特币
-        historicalMarket_changeValue: '{value}', // 用于显示涨跌幅，{value}会被实际数值替换
+        historicalMarket_bitcoinTitle: '比特币',
+        historicalMarket_changeValue: '{value}',
         historicalMarket_timePeriod: '时间段',
         historicalMarket_timeInterval: '时间间隔',
         historicalMarket_avgMarketCap: '平均市值',
         historicalMarket_volume: '成交量',
-        historicalMarket_chartTitle: 'K线图', // 这里可以根据实际币种动态生成，暂时写死比特币图表标题
+        historicalMarket_chartTitle: 'K线图',
+
+        // --- 币种详情页 ---
+        coinDetail_loadingData: '币种数据加载中...',
+        coinDetail_currency: '货币',
+        coinDetail_buy: '买入',
+        coinDetail_sell: '卖出',
+        coinDetail_buyAmount: '买入数量',
+        coinDetail_costAmount: '成本金额',
+        coinDetail_tradeModel: '交易模型',
+        coinDetail_setParameters: '设置您的参数',
+        coinDetail_movingAvgPeriod: '移动平均周期',
+        coinDetail_stdDevMultiplier: '标准差乘数',
+        coinDetail_bollingerPeriod: '布林带周期',
+        coinDetail_takeProfitStopLoss: '止盈/止损',
+        coinDetail_default: '默认',
+        coinDetail_buyNow: '立即买入',
+        coinDetail_aiAnalysis: '图表AI分析',
+        coinDetail_lastUpdated: '页面上次更新时间：',
+        coinDetail_timeframe_1Day: '1天',
+        coinDetail_timeframe_7Days: '7天',
+        coinDetail_timeframe_1Month: '1个月',
+        coinDetail_timeframe_3Month: '3个月',
+        coinDetail_timeframe_1Year: '1年',
+        coinDetail_tradeModel_meanReversion: '均值回归',
+        coinDetail_tradeModel_trendFollowing: '趋势跟踪',
+        coinDetail_tradeModel_arbitrage: '套利交易',
 
         // --- 设置页 ---
         accountSettings: '账户设置',
@@ -198,7 +244,7 @@ const translations = {
         username: '用户名',
         userID: '用户ID',
         email: '邮箱',
-        balance: '余额', // 注意: 这个 key 可能比较通用，检查具体用途
+        balance: '余额',
         joinDate: '注册日期',
         assetUnit: '资产单位',
         decimalPrecision: '小数精度',
@@ -213,25 +259,21 @@ const translations = {
         changes: '涨跌幅',
         logOut: '退出登录',
         darkMode: '深色模式',
-        small: '小', // 字体大小选项可能也需要中/大
+        small: '小',
         open: '开启',
         redPoint: '红点',
 
         // --- 钱包页 ---
-        totalBalance: '总余额', // 用于顶部卡片标题
+        totalBalance: '总余额',
         deposit: '充值',
-        assetBalances: '资产余额', // 用于表格卡片标题
+        assetBalances: '资产余额',
         asset: '资产',
         symbol: '符号',
         market24h: '24小时行情',
-        // 重命名表格头 key
-        onOrdersQuantity: '委托中数量', // Count -> Quantity
-        onOrdersValue: '委托中价值', // Amount -> Value
-        availableQuantity: '可用数量', // Count -> Quantity
-        availableValue: '可用价值', // Amount -> Value
-        // 已移除 key: onOrders, availableBalance, totalBalanceTable, onOrdersCount, onOrdersAmount, availableCount, availableAmount
-
-
+        onOrdersQuantity: '委托中数量',
+        onOrdersValue: '委托中价值',
+        availableQuantity: '可用数量',
+        availableValue: '可用价值',
     }
 };
 
