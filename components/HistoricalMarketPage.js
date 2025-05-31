@@ -81,15 +81,6 @@ function HistoricalMarketPage({ language }) {
                 
                 switch(timeInterval) {
                     case '1min':
-                    case '5min':
-                    case '15min':
-                        timeFormat = {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            hour12: false
-                        };
-                        break;
-                    case '1h':
                         timeFormat = {
                             hour: '2-digit',
                             minute: '2-digit',
@@ -120,21 +111,21 @@ function HistoricalMarketPage({ language }) {
             return labels;
         };
 
-        // 真实的蜡烛图组件
-        const RealisticCandlestickChart = ({ cryptoData, timeInterval, startDate, endDate }) => {
+        // 新的K线图组件 - 简洁样式
+        const CleanCandlestickChart = ({ cryptoData, timeInterval, startDate, endDate }) => {
             const candleData = generateRealisticCandlestickData(cryptoData, startDate, endDate, timeInterval);
             const chartHeight = 400;
-            const chartWidth = 800;
-            const padding = { top: 20, right: 80, bottom: 80, left: 60 }; // 增加底部padding为时间轴留空间
+            const chartWidth = 900;
+            const padding = { top: 30, right: 70, bottom: 50, left: 70 };
             
             const prices = candleData.flatMap(d => [d.high, d.low]);
-            const minPrice = Math.min(...prices) * 0.999;
-            const maxPrice = Math.max(...prices) * 1.001;
+            const minPrice = Math.min(...prices) * 0.998;
+            const maxPrice = Math.max(...prices) * 1.002;
             const priceRange = maxPrice - minPrice;
             
             // 价格刻度
             const priceScale = (price) => {
-                return chartHeight - padding.bottom - ((price - minPrice) / priceRange) * (chartHeight - padding.top - padding.bottom);
+                return padding.top + ((maxPrice - price) / priceRange) * (chartHeight - padding.top - padding.bottom);
             };
             
             // 时间刻度
@@ -145,10 +136,13 @@ function HistoricalMarketPage({ language }) {
             // 生成价格标签
             const generatePriceLabels = () => {
                 const labels = [];
-                const step = priceRange / 6;
-                for (let i = 0; i <= 6; i++) {
-                    const price = minPrice + (step * i);
-                    labels.push(price.toFixed(1));
+                const step = priceRange / 5;
+                for (let i = 0; i <= 5; i++) {
+                    const price = maxPrice - (step * i);
+                    labels.push({
+                        value: price,
+                        y: priceScale(price)
+                    });
                 }
                 return labels;
             };
@@ -157,115 +151,115 @@ function HistoricalMarketPage({ language }) {
             const timeLabels = generateTimeLabels(candleData, timeInterval);
             
             return (
-                <div className="realistic-candlestick-container">
-                    <div className="chart-content">
-                        {/* 价格标签（右侧） */}
-                        <div className="price-labels-right">
-                            {priceLabels.reverse().map((price, i) => (
-                                <div 
-                                    key={i}
-                                    className="price-label-right"
-                                    style={{ 
-                                        top: `${(i / (priceLabels.length - 1)) * 70 + 5}%`
-                                    }}
-                                >
-                                    {price}
-                                </div>
-                            ))}
-                        </div>
-                        
-                        {/* SVG图表 */}
-                        <svg width={chartWidth} height={chartHeight} className="candlestick-svg">
-                            {/* 网格线 */}
-                            <defs>
-                                <pattern id="grid" width="40" height="30" patternUnits="userSpaceOnUse">
-                                    <path d="M 40 0 L 0 0 0 30" fill="none" stroke="#f0f0f0" strokeWidth="1"/>
-                                </pattern>
-                            </defs>
-                            <rect width="100%" height="100%" fill="url(#grid)" />
-                            
-                            {/* 水平网格线 */}
-                            {priceLabels.map((_, i) => (
+                <div style={{ 
+                    width: '100%', 
+                    backgroundColor: '#fff',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '8px',
+                    padding: '20px',
+                    marginTop: '20px'
+                }}>
+                    <svg width={chartWidth} height={chartHeight} style={{ display: 'block', margin: '0 auto' }}>
+                        {/* 水平网格线和价格标签 */}
+                        {priceLabels.map((label, i) => (
+                            <g key={i}>
                                 <line
-                                    key={i}
                                     x1={padding.left}
-                                    y1={padding.top + (i / (priceLabels.length - 1)) * (chartHeight - padding.top - padding.bottom)}
+                                    y1={label.y}
                                     x2={chartWidth - padding.right}
-                                    y2={padding.top + (i / (priceLabels.length - 1)) * (chartHeight - padding.top - padding.bottom)}
-                                    stroke="#e8e8e8"
+                                    y2={label.y}
+                                    stroke="#f3f4f6"
                                     strokeWidth="1"
                                 />
-                            ))}
-                            
-                            {/* 垂直网格线 */}
-                            {timeLabels.map((timeLabel) => (
+                                <text
+                                    x={padding.left - 10}
+                                    y={label.y + 4}
+                                    textAnchor="end"
+                                    fontSize="11"
+                                    fill="#6b7280"
+                                    fontFamily="Arial, sans-serif"
+                                >
+                                    {label.value.toFixed(1)}
+                                </text>
+                            </g>
+                        ))}
+                        
+                        {/* 垂直网格线和时间标签 */}
+                        {timeLabels.map((timeLabel) => (
+                            <g key={timeLabel.index}>
                                 <line
-                                    key={timeLabel.index}
                                     x1={timeScale(timeLabel.index)}
                                     y1={padding.top}
                                     x2={timeScale(timeLabel.index)}
                                     y2={chartHeight - padding.bottom}
-                                    stroke="#f0f0f0"
+                                    stroke="#f9fafb"
                                     strokeWidth="1"
                                 />
-                            ))}
-                            
-                            {/* K线数据 */}
-                            {candleData.map((candle, i) => {
-                                const x = timeScale(i);
-                                const isGreen = candle.close > candle.open;
-                                const bodyTop = priceScale(Math.max(candle.open, candle.close));
-                                const bodyBottom = priceScale(Math.min(candle.open, candle.close));
-                                const bodyHeight = Math.max(1, bodyBottom - bodyTop);
-                                
-                                return (
-                                    <g key={i}>
-                                        {/* 影线 */}
-                                        <line
-                                            x1={x}
-                                            y1={priceScale(candle.high)}
-                                            x2={x}
-                                            y2={priceScale(candle.low)}
-                                            stroke={isGreen ? "#00c851" : "#ff4444"}
-                                            strokeWidth="1"
-                                        />
-                                        
-                                        {/* K线实体 */}
-                                        <rect
-                                            x={x - 8}
-                                            y={bodyTop}
-                                            width="16"
-                                            height={bodyHeight}
-                                            fill={isGreen ? "#00c851" : "#ff4444"}
-                                            stroke={isGreen ? "#00c851" : "#ff4444"}
-                                            strokeWidth="1"
-                                        />
-                                    </g>
-                                );
-                            })}
-                        </svg>
-                        
-                        {/* 时间轴 - 动态生成 */}
-                        <div 
-                            className="time-axis-realistic"
-                            style={{
-                                marginLeft: `${padding.left}px`,
-                                width: `${chartWidth - padding.left - padding.right}px`
-                            }}
-                        >
-                            {timeLabels.map((timeLabel) => (
-                                <div 
-                                    key={timeLabel.index}
-                                    className="time-label-realistic"
-                                    style={{ 
-                                        left: `${timeLabel.position}%`
-                                    }}
+                                <text
+                                    x={timeScale(timeLabel.index)}
+                                    y={chartHeight - padding.bottom + 15}
+                                    textAnchor="middle"
+                                    fontSize="11"
+                                    fill="#6b7280"
+                                    fontFamily="Arial, sans-serif"
                                 >
                                     {timeLabel.label}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                                </text>
+                            </g>
+                        ))}
+                        
+                        {/* 主要边框 */}
+                        <rect
+                            x={padding.left}
+                            y={padding.top}
+                            width={chartWidth - padding.left - padding.right}
+                            height={chartHeight - padding.top - padding.bottom}
+                            fill="none"
+                            stroke="#d1d5db"
+                            strokeWidth="1"
+                        />
+                        
+                        {/* K线数据 */}
+                        {candleData.map((candle, i) => {
+                            const x = timeScale(i);
+                            const isGreen = candle.close >= candle.open;
+                            const openY = priceScale(candle.open);
+                            const closeY = priceScale(candle.close);
+                            const highY = priceScale(candle.high);
+                            const lowY = priceScale(candle.low);
+                            
+                            const bodyTop = Math.min(openY, closeY);
+                            const bodyBottom = Math.max(openY, closeY);
+                            const bodyHeight = Math.max(1, bodyBottom - bodyTop);
+                            
+                            const candleWidth = Math.max(3, (chartWidth - padding.left - padding.right) / candleData.length * 0.6);
+                            
+                            return (
+                                <g key={i}>
+                                    {/* 上下影线 */}
+                                    <line
+                                        x1={x}
+                                        y1={highY}
+                                        x2={x}
+                                        y2={lowY}
+                                        stroke={isGreen ? "#10b981" : "#ef4444"}
+                                        strokeWidth="1.5"
+                                    />
+                                    
+                                    {/* K线实体 */}
+                                    <rect
+                                        x={x - candleWidth / 2}
+                                        y={bodyTop}
+                                        width={candleWidth}
+                                        height={bodyHeight || 1}
+                                        fill={isGreen ? "#10b981" : "#ef4444"}
+                                        stroke={isGreen ? "#10b981" : "#ef4444"}
+                                        strokeWidth="1"
+                                    />
+                                </g>
+                            );
+                        })}
+                    </svg>
                 </div>
             );
         };
@@ -341,9 +335,6 @@ function HistoricalMarketPage({ language }) {
                         onChange={(e) => setTimeInterval(e.target.value)}
                     >
                         <option value="1min">{getTranslation(language, 'historicalMarket_1min')}</option>
-                        <option value="5min">5 Minutes</option>
-                        <option value="15min">15 Minutes</option>
-                        <option value="1h">1 Hour</option>
                         <option value="1d">{getTranslation(language, 'historicalMarket_1d')}</option>
                     </select>
                 </div>
@@ -410,8 +401,8 @@ function HistoricalMarketPage({ language }) {
 
                         <div className="mb-4">
                             <h4 className="font-medium mb-2">Candlestick Chart</h4>
-                            {/* 使用新的真实K线图组件 */}
-                            <RealisticCandlestickChart 
+                            {/* 使用新的干净K线图组件 */}
+                            <CleanCandlestickChart 
                                 cryptoData={selectedCrypto}
                                 timeInterval={timeInterval}
                                 startDate={startDate}
